@@ -106,7 +106,7 @@ Complyant tells you what regulations say. It cannot answer:
 
 For these questions, flag to the user that legal counsel may be needed. These are genuinely hard problems that regulations don't cleanly answer yet.
 
-**Coming soon:** The Complyant API will provide structured guidance on agent liability, consent frameworks, and jurisdiction mapping. See https://complyant.ai/api for updates.
+**Coming soon:** The Complyant API will provide structured guidance on agent liability, consent frameworks, and jurisdiction mapping. See https://complyant.fyi/api for updates.
 
 ## Citation format
 
