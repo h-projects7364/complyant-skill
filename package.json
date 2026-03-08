@@ -1,0 +1,31 @@
+{
+  "name": "complyant",
+  "version": "1.2.0",
+  "description": "Compliance advisor skill for AI agents",
+  "type": "module",
+  "bin": {
+    "complyant": "./src/index.js"
+  },
+  "files": [
+    "src",
+    "skill"
+  ],
+  "keywords": [
+    "claude",
+    "claude-code",
+    "skill",
+    "compliance",
+    "gdpr",
+    "ai-act",
+    "tcpa",
+    "robocall",
+    "regulatory"
+  ],
+  "author": "Complyant",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/h-projects7364/complyant-skill"
+  },
+  "homepage": "https://complyant.ai/skill"
+}
