@@ -1,6 +1,6 @@
 {
   "name": "complyant",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Compliance advisor skill for AI agents",
   "type": "module",
   "bin": {
