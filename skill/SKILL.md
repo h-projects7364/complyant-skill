@@ -20,7 +20,7 @@ Token-efficient regulatory content for agents. ~1,500 tokens per regulation vs 5
 ### Step 1: Fetch the topic index
 
 ```
-https://complyant.ai/llms.txt
+https://complyant.fyi/llms.txt
 ```
 
 This lists all regulations grouped by topic. Find your topic (consent, marketing, AI disclosure, data protection, etc.) and note which regulations are relevant.
@@ -28,26 +28,26 @@ This lists all regulations grouped by topic. Find your topic (consent, marketing
 ### Step 2: Fetch the regulation's section index
 
 ```
-https://complyant.ai/regulations/{jurisdiction}/{slug}/llms.txt
+https://complyant.fyi/regulations/{jurisdiction}/{slug}/llms.txt
 ```
 
 Examples:
-- `https://complyant.ai/regulations/uk/pecr/llms.txt`
-- `https://complyant.ai/regulations/eu/ai-act/llms.txt`
-- `https://complyant.ai/regulations/us/tcpa/llms.txt`
+- `https://complyant.fyi/regulations/uk/pecr/llms.txt`
+- `https://complyant.fyi/regulations/eu/ai-act/llms.txt`
+- `https://complyant.fyi/regulations/us/tcpa/llms.txt`
 
 This lists all sections/articles for that regulation with descriptions.
 
 ### Step 3: Fetch the specific section
 
 ```
-https://complyant.ai/regulations/{jurisdiction}/{slug}/{section}.md
+https://complyant.fyi/regulations/{jurisdiction}/{slug}/{section}.md
 ```
 
 Examples:
-- `https://complyant.ai/regulations/uk/pecr/direct-marketing.md`
-- `https://complyant.ai/regulations/eu/ai-act/transparency-obligations.md`
-- `https://complyant.ai/regulations/us/hipaa/permitted-disclosures.md`
+- `https://complyant.fyi/regulations/uk/pecr/direct-marketing.md`
+- `https://complyant.fyi/regulations/eu/ai-act/transparency-obligations.md`
+- `https://complyant.fyi/regulations/us/hipaa/permitted-disclosures.md`
 
 ### Step 4: Use the content and cite it
 
@@ -57,11 +57,11 @@ The markdown files contain the answer. Include the citation from the file in you
 
 **Need to know:** Can I send marketing emails to a UK list without consent?
 
-1. Fetch `https://complyant.ai/llms.txt`
+1. Fetch `https://complyant.fyi/llms.txt`
 2. "marketing" topic → points to `uk/pecr`, `us/can-spam`
-3. Fetch `https://complyant.ai/regulations/uk/pecr/llms.txt`
+3. Fetch `https://complyant.fyi/regulations/uk/pecr/llms.txt`
 4. Find "direct-marketing" section
-5. Fetch `https://complyant.ai/regulations/uk/pecr/direct-marketing.md`
+5. Fetch `https://complyant.fyi/regulations/uk/pecr/direct-marketing.md`
 6. **Answer:** Prior consent required for unsolicited marketing emails to individuals. Soft opt-in exception for existing customers. (Citation: Reg 22, PECR)
 
 ## Covered regulations
@@ -113,7 +113,7 @@ For these questions, flag to the user that legal counsel may be needed. These ar
 Always cite the source in your answer:
 
 - Short: `(Reg 22, PECR)` or `(Art 6, UK GDPR)`
-- Full: `(Citation: Reg 22, PECR) — Source: complyant.ai/regulations/uk/pecr/direct-marketing`
+- Full: `(Citation: Reg 22, PECR) — Source: complyant.fyi/regulations/uk/pecr/direct-marketing`
 
 ## Tips
 
