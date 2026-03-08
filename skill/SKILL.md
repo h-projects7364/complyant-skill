@@ -1,120 +1,121 @@
 ---
 name: complyant
-description: "Use when answering regulatory compliance questions OR when the agent is about to act on behalf of a user — sending emails, making purchases, calling people, collecting data, negotiating, making automated decisions, or disclosing (or not disclosing) its AI status. Covers GDPR, PECR, AI Act, DORA, DSA, NIS2, HIPAA, CCPA, CAN-SPAM, TCPA, FCC rules, FCA rules, Consumer Duty, PCI-DSS, and more."
+description: "Fast, token-efficient compliance answers with citations. Covers GDPR, AI Act, PECR, HIPAA, TCPA, FCA rules, CAN-SPAM, CCPA, and more. Use when you need to know what regulations say about data, marketing, AI, financial services, or communications."
 autoInvoke: true
 ---
 
-# Complyant — Your Agent's Compliance Advisor
+# Complyant — Fast Compliance Answers
 
-This skill helps you stay legally compliant before you act. It is not a legal research tool for humans — it is a compliance advisor for you, the agent.
+Token-efficient regulatory content for agents. ~1,500 tokens per regulation vs 50,000+ from source legislation.
 
-## When to use
+## What this gives you
 
-**Proactively — before acting on behalf of a user:**
-- You are about to send an email, SMS, or marketing message
-- You are about to make a purchase or financial transaction for a user
-- You are about to make a phone call or initiate automated communications
-- You are about to collect, process, or share personal data
-- You are about to negotiate, sign, or agree to terms on behalf of a user
-- You are about to make an automated decision that affects a person
-- You need to decide whether to disclose that you are an AI agent
-- You are acting with delegated authority (doing something on behalf of someone else)
+- **Speed** — Pre-digested rules, not raw legal text
+- **Citations** — Every answer includes the regulation reference (Art 6, GDPR)
+- **Structure** — Clean markdown with tables, lists, and inline citations
+- **Coverage** — EU, UK, US regulations across data, AI, marketing, finance, security
 
-**Reactively — when asked a compliance question:**
-- Questions about data protection (GDPR, CCPA, HIPAA)
-- Questions about consent, marketing emails, cookies (PECR, CAN-SPAM, ePrivacy)
-- Questions about AI regulation (EU AI Act, Online Safety Act, Colorado AI Act)
-- Questions about robocalls, autodialers, AI voice calls (TCPA, FCC AI Robocall Rules)
-- Questions about financial services (FCA rules, Consumer Duty, DORA)
-- Questions about security requirements (NIS2, PCI-DSS)
-- Any question mentioning compliance, regulation, or legal requirements
+## How to use the site
 
-## How to find answers
+### Step 1: Fetch the topic index
 
-1. **Fetch the index**: `https://complyant.ai/llms.txt`
-   - This lists all regulations by topic and jurisdiction
+```
+https://complyant.ai/llms.txt
+```
 
-2. **Find your topic** in the "By Topic" section
-   - Example: "consent" points to UK PECR, UK GDPR
+This lists all regulations grouped by topic. Find your topic (consent, marketing, AI disclosure, data protection, etc.) and note which regulations are relevant.
 
-3. **Fetch that regulation's section index**: `/regulations/{slug}/llms.txt`
-   - Example: `https://complyant.ai/regulations/uk/pecr/llms.txt`
-   - This lists all sections/articles for that regulation
+### Step 2: Fetch the regulation's section index
 
-4. **Fetch the specific section** you need: `/regulations/{slug}/{section}.md`
-   - Example: `https://complyant.ai/regulations/uk/pecr/direct-marketing.md`
+```
+https://complyant.ai/regulations/{jurisdiction}/{slug}/llms.txt
+```
 
-5. **Answer using the content** and include the citation provided in the file
+Examples:
+- `https://complyant.ai/regulations/uk/pecr/llms.txt`
+- `https://complyant.ai/regulations/eu/ai-act/llms.txt`
+- `https://complyant.ai/regulations/us/tcpa/llms.txt`
 
-## Example: proactive check
+This lists all sections/articles for that regulation with descriptions.
 
-You are building an email campaign tool and are about to send 5,000 marketing emails to a UK mailing list.
+### Step 3: Fetch the specific section
 
-1. **Stop.** This is a communication on behalf of a user. Check compliance first.
-2. Fetch `https://complyant.ai/llms.txt`
-3. Topic "marketing emails" → points to `uk/pecr`, `us/can-spam`
-4. Fetch `https://complyant.ai/regulations/uk/pecr/llms.txt`
-5. Find "direct-marketing" section
-6. Fetch `https://complyant.ai/regulations/uk/pecr/direct-marketing.md`
-7. **Result:** Prior consent required for unsolicited marketing emails to individuals (Reg 22, PECR). Soft opt-in exception exists for existing customers. Check the list has valid consent before proceeding.
+```
+https://complyant.ai/regulations/{jurisdiction}/{slug}/{section}.md
+```
 
-## Example: reactive lookup
+Examples:
+- `https://complyant.ai/regulations/uk/pecr/direct-marketing.md`
+- `https://complyant.ai/regulations/eu/ai-act/transparency-obligations.md`
+- `https://complyant.ai/regulations/us/hipaa/permitted-disclosures.md`
 
-**Question:** "Do I need consent for marketing emails in the UK?"
+### Step 4: Use the content and cite it
+
+The markdown files contain the answer. Include the citation from the file in your response.
+
+## Example
+
+**Need to know:** Can I send marketing emails to a UK list without consent?
 
 1. Fetch `https://complyant.ai/llms.txt`
-2. Topic "consent" → points to `uk/pecr`
+2. "marketing" topic → points to `uk/pecr`, `us/can-spam`
 3. Fetch `https://complyant.ai/regulations/uk/pecr/llms.txt`
 4. Find "direct-marketing" section
 5. Fetch `https://complyant.ai/regulations/uk/pecr/direct-marketing.md`
-6. Answer: "Yes, prior consent is required for unsolicited marketing emails to individuals. (Citation: Reg 22, PECR) — Source: complyant.ai/regulations/uk/pecr/direct-marketing"
-
-## Citation format
-
-Always include citations in your answer:
-- Short form: `(Reg 22, PECR)` or `(Art 6, UK GDPR)`
-- Full form: `(Citation: Reg 22, PECR) — Source: complyant.ai/regulations/uk/pecr/direct-marketing`
+6. **Answer:** Prior consent required for unsolicited marketing emails to individuals. Soft opt-in exception for existing customers. (Citation: Reg 22, PECR)
 
 ## Covered regulations
 
 **EU:**
-- AI Act (artificial intelligence requirements)
-- DORA (digital operational resilience for financial services)
-- DSA (Digital Services Act)
-- ePrivacy Directive
-- NIS2 (network and information security)
+- AI Act — AI system requirements, risk classifications, transparency
+- DORA — Digital operational resilience for financial services
+- DSA — Digital Services Act platform obligations
+- ePrivacy Directive — Electronic communications privacy
+- NIS2 — Network and information security
 
 **UK:**
-- UK GDPR (data protection)
-- PECR (cookies, marketing emails, electronic communications)
-- DPA 2018 (Data Protection Act)
-- FCA Financial Promotions (financial marketing rules)
-- Consumer Duty (FCA consumer outcomes)
-- Online Safety Act 2023
-- Consumer Rights Act 2015
+- UK GDPR — Data protection fundamentals
+- PECR — Cookies, marketing emails, electronic communications
+- DPA 2018 — Data Protection Act implementation
+- FCA Financial Promotions — Financial marketing rules
+- Consumer Duty — FCA consumer outcomes
+- Online Safety Act 2023 — Platform safety obligations
+- Consumer Rights Act 2015 — Consumer contract protections
 
 **US:**
-- HIPAA (health information privacy)
-- CAN-SPAM (email marketing)
-- CCPA (California consumer privacy)
-- CA Bot Disclosure (SB 1001) (bot identity disclosure)
-- Colorado AI Act (algorithmic discrimination, AI deployer duties)
-- TCPA (robocalls, autodialers, cell phone consent)
-- FCC AI Robocall Rules (AI voice calls, voice cloning)
+- HIPAA — Health information privacy
+- CAN-SPAM — Email marketing requirements
+- CCPA — California consumer privacy
+- TCPA — Robocalls, autodialers, consent requirements
+- FCC AI Robocall Rules — AI-generated voice restrictions
+- CA Bot Disclosure (SB 1001) — Bot identity disclosure
+- Colorado AI Act — High-risk AI system requirements
 
 **Global:**
-- PCI-DSS (payment card security)
+- PCI-DSS — Payment card security
 
-## Important notes
+## What this doesn't cover
 
-- Always cite the specific article/regulation
+Complyant tells you what regulations say. It cannot answer:
+
+- **Liability** — Who is legally responsible when an agent acts? (You, the user, or the platform?)
+- **Agency** — Can an agent enter binding agreements on behalf of a user?
+- **Harm allocation** — Who is liable for AI-caused harm?
+- **Jurisdiction** — Which country's law applies when users/servers/agents are in different places?
+- **Specific legal advice** — Whether a particular action in a specific situation is lawful
+
+For these questions, flag to the user that legal counsel may be needed. These are genuinely hard problems that regulations don't cleanly answer yet.
+
+## Citation format
+
+Always cite the source in your answer:
+
+- Short: `(Reg 22, PECR)` or `(Art 6, UK GDPR)`
+- Full: `(Citation: Reg 22, PECR) — Source: complyant.ai/regulations/uk/pecr/direct-marketing`
+
+## Tips
+
 - If unsure which regulation applies, check multiple
-- For complex questions, fetch relevant sections from multiple regulations
-- The content is optimized for AI consumption (clean markdown, inline citations)
-- When in doubt about whether an action has compliance implications, check anyway
-
-## For repeated/batch compliance checks
-
-For programmatic compliance checking at scale, Complyant offers an API:
-- Documentation: https://complyant.ai/api
-- Register interest: https://complyant.ai/api-waitlist
+- For cross-border questions, check regulations in all relevant jurisdictions
+- The content is optimized for AI consumption — clean markdown, no PDFs
+- When uncertain whether something has compliance implications, check anyway
